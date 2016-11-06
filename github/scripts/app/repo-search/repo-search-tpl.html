@@ -1,0 +1,82 @@
+﻿<div ng-if="s.errorMessage.length > 0">
+    <p class="error-message"> {{ s.errorMessage }}  </p>
+</div>
+<section ng-show="s.searchResult.length > 0">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Last Updated</th>
+                <th>Stats</th>
+                <th>Owner</th>
+                <th></th>  
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="repo in s.searchResult">
+                <td class="repo-item-name"><a tooltip-hover-directive data-toggle="tooltip" data-placement="top" title="{{repo.fullName}}" class="mouse-arrow"> {{repo.name}} </a> </td>
+                <td class="repo-item-description">{{repo.description}}</td>
+                <td>{{repo.updated | date :'medium'}} </td>
+                <td class="repo-item-stats">
+                    <div title="Stars" class="text-nowrap"><span class="glyphicon glyphicon-star"></span> {{repo.stargazerCount | number }}</div>
+                    <div title="Watchers" class="text-nowrap"><span class="glyphicon glyphicon-eye-open"></span> {{repo.watchersCount | number }}</div>
+                    <div title="Forks" class="text-nowrap"><span class="glyphicon glyphicon-cutlery"></span> {{repo.forksCount | number }}</div>
+                    <div title="Issues" class="text-nowrap"><span class="glyphicon glyphicon-warning-sign"></span> {{repo.openIssuesCount | number }}</div>
+                </td>
+                <td><img ng-if="repo.ownerAvatarUrl.length > 0" ng-src="{{repo.ownerAvatarUrl}}" class="repo-item-owner-image" /> <a target="_github" href="https://github.com/{{repo.ownerLogin}}"> {{repo.ownerLogin}}</a></td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            Actions <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{repo.htmlUrl}}" target="_github" ><span class="glyphicon glyphicon-new-window"></span> View Site</a></li>
+                            <li><a data-url="{{repo.url}}" data-toggle="modal" data-target="#gitUrlModal" class="mouse-hand"><span class="glyphicon glyphicon-import"></span> Repository URL</a></li>
+                            <li><a ng-click="s.viewIssues(repo.fullName)" class="mouse-hand"><span class="glyphicon glyphicon-warning-sign"></span> View issues</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<div class="modal fade" id="gitUrlModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                <h4 class="modal-title">Repository GitHub URL</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="repo-url" class="control-label">URL:</label>
+                        <input type="text" class="form-control" id="repo-url" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $("#gitUrlModal").on("show.bs.modal", function (event) {
+            var atag = $(event.relatedTarget)
+            var url = atag.data("url");
+            var modal = $(this)
+            modal.find(".modal-body input").val(url);
+            var urlTextBox = document.getElementById("repo-url");
+            urlTextBox.focus();
+            urlTextBox.select();
+        })
+    });
+
+</script>

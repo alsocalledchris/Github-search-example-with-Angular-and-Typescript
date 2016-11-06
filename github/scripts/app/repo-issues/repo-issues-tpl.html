@@ -1,0 +1,31 @@
+﻿<button type="button" class="btn btn-default" ng-click="i.goBack()" ><span class="glyphicon glyphicon-arrow-left"></span> Go Back to search results</button>
+<div ng-if="i.errorMessage.length > 0">
+      <p class="error-message"> {{ i.errorMessage }}  </p>
+</div>
+<section>
+    <h2>Issues for {{i.selectedRepoFullName}}</h2>
+    <div ng-show="i.repoIssues.length > 0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Details</th>
+                    <th>State</th>
+                    <th>Created</th>
+                    <th>Last Updated</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="issue in i.repoIssues">
+                    <td> <a href="{{issue.htmlUrl}}" target="_github"> {{ issue.number }}</a></td>
+                    <td class="issue-title">{{ issue.title }}</td>
+                    <td class="issue-description">{{ issue.body }}</td>
+                    <td>{{ issue.state }}</td>
+                    <td class="issue-date">{{ issue.createdAt | date :'medium' }}</td>
+                    <td class="issue-date">{{ issue.updatedAt | date :'medium' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

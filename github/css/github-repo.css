@@ -1,0 +1,60 @@
+﻿body {
+    padding-top: 70px;
+}  
+   
+#search { 
+    font-size: 24px;
+} 
+
+.github-repo-header-text {
+    color: #ffffff;
+    font-size:24px;  
+    float: left;
+    height: 50px;
+    padding: 15px;  
+    margin-left: -15px;
+    line-height: 20px; 
+}
+
+.repo-item-owner-image {
+    width: 25px; 
+    height: 25px;
+}
+
+.repo-item-description {
+    max-width: 400px;
+}
+
+.repo-item-name {
+    max-width: 150px;
+}
+
+.repo-item-stats {
+    min-width: 75px;
+}
+
+.mouse-hand { 
+    cursor: pointer;
+}
+
+.mouse-arrow { 
+    cursor: default;
+}
+
+.error-message {
+    background-color: #f2dede;
+    padding:10px;
+    margin-top:10px;
+}
+
+.issue-date {
+    min-width: 175px;
+}
+
+.issue-description {
+    max-width: 300px;
+}
+
+.issue-title {
+    max-width: 200px;
+}

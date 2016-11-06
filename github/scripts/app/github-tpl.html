@@ -1,0 +1,9 @@
+﻿<div class="page-header">
+    <h1>Please type a repository name to begin the search...</h1>
+    <div class="form-group has-feedback">
+        <input type="search" class="form-control" id="search" ng-change="g.performSearch()" ng-model="g.query" ng-model-options="{ debounce: 500 }" />
+        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+    </div>
+</div>
+<span us-spinner spinner-key="spinner-search" spinner-start-active="false"></span>
+<div ui-view></div>
