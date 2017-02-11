@@ -1,15 +1,14 @@
-﻿/// <binding AfterBuild='default' Clean='clean' />
-
-var gulp = require("gulp"),
+﻿var gulp = require("gulp"),
 rimraf = require("rimraf"),
 concat = require("gulp-concat"),
 cssmin = require("gulp-cssmin"),
 uglify = require("gulp-uglify"),
 cssclean = require("gulp-clean-css"),
-del = require("del");
+del = require("del"),
+ts = require('gulp-typescript');
 
 var paths = {
-    webroot: "./wwwroot/",
+    webroot: "./release/",
     scriptslib: "scripts/lib/",
     css: "./css/**/*.css",
     app: "./scripts/app/",
@@ -24,6 +23,9 @@ var paths = {
 paths.concatJsDest = paths.webroot + "scripts/site.min.js";
 paths.concatCssDest = paths.webroot + "css/site.min.css";
 
+
+
+
 gulp.task("clean:js", function (cb) {
     rimraf(paths.concatJsDest, cb);
 });
@@ -33,15 +35,15 @@ gulp.task("clean:css", function (cb) {
 });
 
 gulp.task('cleanscriptsfolder', function () {
-    return del(["wwwroot/scripts/**/*"]);
+    return del(["release/scripts/**/*"]);
 });
 
 gulp.task('copyscriptsfolder', function () {
-    gulp.src(paths.tsscripts).pipe(gulp.dest("wwwroot/scripts/app"));
-    gulp.src(paths.html).pipe(gulp.dest("wwwroot/scripts/app"));
-    gulp.src(paths.jslibraryincludes).pipe(gulp.dest("wwwroot/scripts"));
-    gulp.src(paths.csslibraryinclude).pipe(gulp.dest("wwwroot/css"));
-    gulp.src(paths.css).pipe(gulp.dest("wwwroot/css"));
+    gulp.src(paths.tsscripts).pipe(gulp.dest("release/scripts/app"));
+    gulp.src(paths.html).pipe(gulp.dest("release/scripts/app"));
+    gulp.src(paths.jslibraryincludes).pipe(gulp.dest("release/scripts"));
+    gulp.src(paths.csslibraryinclude).pipe(gulp.dest("release/css"));
+    gulp.src(paths.css).pipe(gulp.dest("release/css"));
 });
 
 gulp.task("min:js", function () {
@@ -75,7 +77,7 @@ gulp.task("copyfonts", function () {
 });
 
 gulp.task("copyhtml", function () {
-    gulp.src(paths.html).pipe(gulp.dest('wwwroot/scripts'));
+    gulp.src(paths.html).pipe(gulp.dest('release/scripts'));
 });
 
 gulp.task("watch", function () {
