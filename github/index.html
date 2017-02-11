@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Github repo search">
     <title>Github repository search</title>
-    <link href="release/css/site.min.css" rel="stylesheet" />
+     <!-- build:css -->
+        <link href="css/github-repo.css" rel="stylesheet" />
+        <link href="scripts/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+     <!-- endbuild -->
 </head>
 <body>
     <header>
@@ -23,6 +26,28 @@
             <div ui-view></div>
         </div>
     </div>
-    <script type="text/javascript"" src="release/scripts/site.min.js"> </script>
+    <!-- build:js -->
+        <script src="scripts/lib/jquery/dist/jquery.js"></script>
+        <script src="scripts/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="scripts/lib/angular/angular.js"></script>
+        <script src="scripts/lib/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="scripts/lib/spin.js/spin.js"></script>
+        <script src="scripts/lib/angular-spinner/angular-spinner.js"></script>
+
+        <script src="scripts/app/repo-issues/repo-issues-ctrl.js"></script>
+        <script src="scripts/app/repo-issues/repo-issues-service.js"></script>
+        <script src="scripts/app/repo-issues/model/repository-issue-response.js"></script>
+        <script src="scripts/app/repo-issues/model/repository-issue-response-item.js"></script>
+        <script src="scripts/app/repo-issues/model/repository-issue.js"></script>
+        <script src="scripts/app/github-ctrl.js"></script>
+        <script src="scripts/app/repo-search/tool-tip-hover-directive.js"></script>
+        <script src="scripts/app/repo-search/repo-search-ctrl.js"></script>
+        <script src="scripts/app/repo-search/repo-search-service.js"></script>
+        <script src="scripts/app/github-routes.js"></script>
+        <script src="scripts/app/github-app.js"></script>
+        <script src="scripts/app/repo-search/model/repository.js"></script>
+        <script src="scripts/app/repo-search/model/repository-search-response-item.js"></script>
+        <script src="scripts/app/repo-search/model/respository-search-response.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

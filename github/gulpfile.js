@@ -5,7 +5,8 @@ cssmin = require("gulp-cssmin"),
 uglify = require("gulp-uglify"),
 cssclean = require("gulp-clean-css"),
 del = require("del"),
-ts = require('gulp-typescript');
+ts = require('gulp-typescript'),
+htmlreplace = require('gulp-html-replace');
 
 var paths = {
     webroot: "./release/",
@@ -77,13 +78,22 @@ gulp.task("copyfonts", function () {
 });
 
 gulp.task("copyhtml", function () {
-    gulp.src(paths.html).pipe(gulp.dest('release/scripts'));
+    gulp.src(paths.html).pipe(gulp.dest('release/scripts/app'));
+});
+
+gulp.task('min:htmlreplace', function() {
+  gulp.src('index.html')
+    .pipe(htmlreplace({
+        'css': 'css/site.min.css',
+        'js': 'scripts/site.min.js'
+    }))
+    .pipe(gulp.dest('release/'));
 });
 
 gulp.task("watch", function () {
     gulp.watch(["./scripts/app/**/*.{ts,js,html}", paths.css], ["copyscriptsfolder"]);
 });
 
-gulp.task("build", ["min:js", "min:css", "copyfonts", "copyhtml"]);
+gulp.task("build", ["min:js", "min:css", "copyfonts", "copyhtml", "min:htmlreplace"]);
 gulp.task("debug", ["cleanscriptsfolder", "copyscriptsfolder"]);
-gulp.task("default",["min:js", "min:css", "copyfonts", "copyhtml"]);
+gulp.task("default",["min:js", "min:css", "copyfonts", "copyhtml", "min:htmlreplace"]);

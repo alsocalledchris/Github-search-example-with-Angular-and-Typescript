@@ -1,20 +1,21 @@
 {
-	"version": "1.0.0",
-	"name": "github-example",
-	"private": true,
-    "devDependencies": {
-        "gulp": "3.9.1",
-        "gulp-concat": "2.6.0",
-        "gulp-cssmin": "0.1.7",
-        "gulp-uglify": "2.0.0",
-        "rimraf": "2.5.4",
-        "del": "2.2.0",
-        "gulp-clean-css": "2.0.13",
-        "gulp-typescript": "3.1.4",
-        "lite-server": "2.2.2"
-    },
-    "scripts": {
-     "lite": "lite-server --port 10001",
-     "start": "npm run lite"
-   }
+  "version": "1.0.0",
+  "name": "github-example",
+  "private": true,
+  "devDependencies": {
+    "del": "2.2.0",
+    "gulp": "3.9.1",
+    "gulp-clean-css": "2.0.13",
+    "gulp-concat": "2.6.0",
+    "gulp-cssmin": "0.1.7",
+    "gulp-html-replace": "1.6.2",
+    "gulp-typescript": "3.1.4",
+    "gulp-uglify": "2.0.0",
+    "lite-server": "2.2.2",
+    "rimraf": "2.5.4"
+  },
+  "scripts": {
+    "lite": "lite-server --port 10001",
+    "start": "npm run lite"
+  }
 }
