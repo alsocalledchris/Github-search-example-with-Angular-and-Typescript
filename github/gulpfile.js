@@ -6,7 +6,9 @@ uglify = require("gulp-uglify"),
 cssclean = require("gulp-clean-css"),
 del = require("del"),
 ts = require('gulp-typescript'),
-htmlreplace = require('gulp-html-replace');
+htmlreplace = require('gulp-html-replace'),
+sass = require("gulp-sass"),
+lec = require("gulp-line-ending-corrector");
 
 var paths = {
     webroot: "./release/",
@@ -90,10 +92,30 @@ gulp.task('min:htmlreplace', function() {
     .pipe(gulp.dest('release/'));
 });
 
+gulp.task("sass", function () {
+    gulp.src("sass" + "*.scss")
+        .pipe(sass({ outputStyle: "nested" }).on("error", sass.logError))
+        .pipe(lec({ verbose: true, eolc: "CRLF" }))
+        .pipe(gulp.dest("css"))
+        .on("error", exceptionLog);
+});
+
+var tsProject = ts.createProject("tsconfig.json");
+
+gulp.task("typescript", function () {
+    var tsResult = tsProject.src()
+        .pipe(tsProject());
+    return tsResult.js.pipe(gulp.dest("scripts/app"));
+});
+
+function exceptionLog(error) {
+    console.log(error.toString());
+}
+
 gulp.task("watch", function () {
     gulp.watch(["./scripts/app/**/*.{ts,js,html}", paths.css], ["copyscriptsfolder"]);
 });
 
-gulp.task("build", ["min:js", "min:css", "copyfonts", "copyhtml", "min:htmlreplace"]);
+gulp.task("build", ["typescript", "sass", "min:js", "min:css", "copyfonts", "copyhtml", "min:htmlreplace"]);
 gulp.task("debug", ["cleanscriptsfolder", "copyscriptsfolder"]);
-gulp.task("default",["min:js", "min:css", "copyfonts", "copyhtml", "min:htmlreplace"]);
+gulp.task("default",["typescript", "sass", "min:js", "min:css", "copyfonts", "copyhtml", "min:htmlreplace"]);
