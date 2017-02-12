@@ -14,7 +14,6 @@
     "gulp-line-ending-corrector" : "1.0.1",
     "gulp-uglify": "2.0.0",
     "lite-server": "2.2.2",
-    "rimraf": "2.5.4",
     "bower": "1.8.0",
     "run-sequence": "1.2.2"
   },
