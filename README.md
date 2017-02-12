@@ -8,10 +8,10 @@ To run get the latest from Github and run the build task. Creates a release fold
 #To run
 
 Goto github source folder in PowerShell
-npm install
-bower install
-gulp build
-npm start
-
+npm install  
+bower install  
+gulp build  
+npm start  
+  
 View release version under /release/index.html
 
