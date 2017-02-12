@@ -1,9 +1,9 @@
 # Github-search-example-with-Angular-and-Typescript
 Example use of Typescript with AngularJS hitting Github API
 
-This project is an example of how to use Typescript with AngularJS. It uses Gulp and Bower for build tasks and JS dependencies and is hosted via Node (npm start).
+This project is an example of how to use Typescript with AngularJS and basic SASS. It uses Gulp and Bower for build tasks and JS dependencies and is hosted via Node.
 
-To run get the latest from Github and run the build task. Creates a release folder as well with mini-fied CSS and JS. Watch task is used to generate the JS and CSS files from Typescript and SASS files.
+The build tasks create a release folder with the App using mini-fied CSS and JS. Watch task is used to generate the JS and CSS files from Typescript and SASS files and should be run whilst developing.
 
 #To run
 
