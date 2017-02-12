@@ -26,4 +26,3 @@ var App;
         Controllers.GithubController = GithubController;
     })(Controllers = App.Controllers || (App.Controllers = {}));
 })(App || (App = {}));
-//# sourceMappingURL=github-ctrl.js.map

@@ -8,7 +8,8 @@ del = require("del"),
 ts = require('gulp-typescript'),
 htmlreplace = require('gulp-html-replace'),
 sass = require("gulp-sass"),
-lec = require("gulp-line-ending-corrector");
+lec = require("gulp-line-ending-corrector"),
+runSequence = require('run-sequence');
 
 var paths = {
     webroot: "./release/",
@@ -26,15 +27,16 @@ var paths = {
 paths.concatJsDest = paths.webroot + "scripts/site.min.js";
 paths.concatCssDest = paths.webroot + "css/site.min.css";
 
-
-
-
-gulp.task("clean:js", function (cb) {
-    rimraf(paths.concatJsDest, cb);
+gulp.task("clean:app", function () {
+    rimraf("scripts/app");
 });
 
-gulp.task("clean:css", function (cb) {
-    rimraf(paths.concatCssDest, cb);
+gulp.task("clean:css", function () {
+    rimraf("css");
+});
+
+gulp.task("clean:release", function () {
+    rimraf("release");
 });
 
 gulp.task('cleanscriptsfolder', function () {
@@ -93,7 +95,7 @@ gulp.task('min:htmlreplace', function() {
 });
 
 gulp.task("sass", function () {
-    gulp.src("sass" + "*.scss")
+    gulp.src("sass/" + "*.scss")
         .pipe(sass({ outputStyle: "nested" }).on("error", sass.logError))
         .pipe(lec({ verbose: true, eolc: "CRLF" }))
         .pipe(gulp.dest("css"))
@@ -113,9 +115,21 @@ function exceptionLog(error) {
 }
 
 gulp.task("watch", function () {
-    gulp.watch(["./scripts/app/**/*.{ts,js,html}", paths.css], ["copyscriptsfolder"]);
+    gulp.watch(["app/**/*.{ts,html}", "sass/*.scss"], ["typescript", "sass"]);
 });
 
-gulp.task("build", ["typescript", "sass", "min:js", "min:css", "copyfonts", "copyhtml", "min:htmlreplace"]);
-gulp.task("debug", ["cleanscriptsfolder", "copyscriptsfolder"]);
-gulp.task("default",["typescript", "sass", "min:js", "min:css", "copyfonts", "copyhtml", "min:htmlreplace"]);
+gulp.task('build', function(callback) {
+  runSequence(["clean:app", "clean:css", "clean:release"],
+                ["typescript", "sass"],
+               ["min:js", "min:css", "copyfonts", "copyhtml"],
+               ["min:htmlreplace"],
+              callback);
+});
+
+gulp.task('default', function(callback) {
+  runSequence(["clean:app", "clean:css", "clean:release"],
+               ["typescript", "sass",],
+               ["min:js", "min:css", "copyfonts", "copyhtml"],
+               ["min:htmlreplace"],
+              callback);
+});

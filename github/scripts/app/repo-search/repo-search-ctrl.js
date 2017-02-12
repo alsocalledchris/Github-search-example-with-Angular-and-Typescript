@@ -51,4 +51,3 @@ var App;
         })(Controllers = RepoSearch.Controllers || (RepoSearch.Controllers = {}));
     })(RepoSearch = App.RepoSearch || (App.RepoSearch = {}));
 })(App || (App = {}));
-//# sourceMappingURL=repo-search-ctrl.js.map

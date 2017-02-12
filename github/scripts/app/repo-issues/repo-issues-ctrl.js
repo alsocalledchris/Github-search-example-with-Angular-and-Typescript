@@ -47,4 +47,3 @@ var App;
         })(Controllers = RepoIssues.Controllers || (RepoIssues.Controllers = {}));
     })(RepoIssues = App.RepoIssues || (App.RepoIssues = {}));
 })(App || (App = {}));
-//# sourceMappingURL=repo-issues-ctrl.js.map

@@ -24,4 +24,3 @@ var App;
         })(Directives = RepoSearch.Directives || (RepoSearch.Directives = {}));
     })(RepoSearch = App.RepoSearch || (App.RepoSearch = {}));
 })(App || (App = {}));
-//# sourceMappingURL=tool-tip-hover-directive.js.map

@@ -32,4 +32,3 @@ var App;
         })(Services = RepoIssues.Services || (RepoIssues.Services = {}));
     })(RepoIssues = App.RepoIssues || (App.RepoIssues = {}));
 })(App || (App = {}));
-//# sourceMappingURL=repo-issues-service.js.map

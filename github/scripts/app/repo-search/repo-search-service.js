@@ -35,4 +35,3 @@ var App;
         })(Services = RepoSearch.Services || (RepoSearch.Services = {}));
     })(RepoSearch = App.RepoSearch || (App.RepoSearch = {}));
 })(App || (App = {}));
-//# sourceMappingURL=repo-search-service.js.map

@@ -13,4 +13,3 @@ var App;
         })(Model = RepoSearch.Model || (RepoSearch.Model = {}));
     })(RepoSearch = App.RepoSearch || (App.RepoSearch = {}));
 })(App || (App = {}));
-//# sourceMappingURL=repository-search-response-item.js.map

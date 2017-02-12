@@ -13,4 +13,3 @@ var App;
         })(Model = RepoIssues.Model || (RepoIssues.Model = {}));
     })(RepoIssues = App.RepoIssues || (App.RepoIssues = {}));
 })(App || (App = {}));
-//# sourceMappingURL=repository-issue-response.js.map

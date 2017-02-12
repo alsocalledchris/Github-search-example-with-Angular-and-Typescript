@@ -6,4 +6,3 @@ var repoSearchMopdule = angular.module("Github", ["ui.router", "angularSpinner"]
     .controller("RepoSearchController", ["RepoSearchService", "$state", "usSpinnerService", function (repoSearchService, $state, spinner) { return new App.RepoSearch.Controllers.RepoSearchController(repoSearchService, $state, spinner); }])
     .controller("RepoIssuesController", ["RepoIssuesService", "$state", "usSpinnerService", function (repoIssuesService, $state, spinner) { return new App.RepoIssues.Controllers.RepoIssuesController(repoIssuesService, $state, spinner); }])
     .directive("tooltipHoverDirective", ["$timeout", function ($timeout) { return App.RepoSearch.Directives.ToolTipHover.factory($timeout); }]);
-//# sourceMappingURL=github-app.js.map

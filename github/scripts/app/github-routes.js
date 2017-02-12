@@ -28,4 +28,3 @@ var App;
     }());
     App.Routes = Routes;
 })(App || (App = {}));
-//# sourceMappingURL=github-routes.js.map
