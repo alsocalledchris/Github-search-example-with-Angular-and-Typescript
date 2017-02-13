@@ -16,7 +16,8 @@
     "gulp-uglify": "2.0.0",
     "lite-server": "2.2.2",
     "bower": "1.8.0",
-    "run-sequence": "1.2.2"
+    "run-sequence": "1.2.2",
+    "gulp-sourcemaps" : "2.4.1"
   },
   "scripts": {
     "lite": "lite-server --port 10001",
