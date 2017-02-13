@@ -8,7 +8,8 @@ ts = require('gulp-typescript'),
 htmlreplace = require('gulp-html-replace'),
 sass = require("gulp-sass"),
 lec = require("gulp-line-ending-corrector"),
-runSequence = require('run-sequence');
+runSequence = require('run-sequence'),
+sourcemaps = require('gulp-sourcemaps');
 
 var paths = {
     releaseFolder: "./release/",
@@ -95,8 +96,13 @@ gulp.task("sass", function () {
 var tsProject = ts.createProject("tsconfig.json");
 gulp.task("typescript", function () {
     var tsResult = tsProject.src()
+        .pipe(sourcemaps.init())
         .pipe(tsProject());
-    return tsResult.js.pipe(gulp.dest("scripts/app"));
+    return tsResult.js
+        .pipe(sourcemaps.write('.', {
+           sourceRoot: function(file){ return file.cwd + '/src'; }
+        }))
+        .pipe(gulp.dest("scripts/app"));
 });
 
 function exceptionLog(error) {
