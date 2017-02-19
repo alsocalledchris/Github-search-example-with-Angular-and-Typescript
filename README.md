@@ -15,3 +15,4 @@ npm start
   
 View release version under /release/index.html
 
+(You will need bower and gulp installed globally - use "npm install gulp -g" and "npm install bower -g" if the above commands throw errors)
