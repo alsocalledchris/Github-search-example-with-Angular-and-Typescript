@@ -20,9 +20,9 @@
         performSearch() {
             let vm: GithubController = this;
             if (vm.query !== undefined && vm.query.length > 0) {
-                vm.stateService.go('app.search', { query: vm.query }, { notify: true });
+                vm.stateService.go("app.search", { query: vm.query }, { notify: true });
             } else {
-                vm.stateService.go('app', { query: "" }, { notify: true });
+                vm.stateService.go("app", { query: "" }, { notify: true });
             }
         }
     }

@@ -49,7 +49,7 @@
 
         public viewIssues(fullName: string) {
             let vm: RepoSearchController = this;
-            vm.stateService.go('app.issues', { fullName: fullName, query: vm.query }, { notify: true });
+            vm.stateService.go("app.issues", { fullName: fullName, query: vm.query }, { notify: true });
         }
     }
 }

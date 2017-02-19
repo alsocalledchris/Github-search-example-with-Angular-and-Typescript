@@ -27,18 +27,11 @@ body {
 
 .repo-item-name {
     max-width: 150px;
+    cursor: help;
 }
 
 .repo-item-stats {
     min-width: 75px;
-}
-
-.mouse-hand { 
-    cursor: pointer;
-}
-
-.mouse-arrow { 
-    cursor: default;
 }
 
 .error-message {
@@ -57,4 +50,16 @@ body {
 
 .issue-title {
     max-width: 200px;
+}
+
+.search-results-action-container {
+    .btn {
+        width: 120px;
+        margin-top: 5px;
+        display: block;
+    }
+
+    a {
+        cursor: pointer;
+    }
 }

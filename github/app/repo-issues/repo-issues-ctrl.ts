@@ -47,7 +47,7 @@
 
         public goBack() : void {
             let vm: RepoIssuesController = this;
-            vm.stateService.go('app.search', { query: vm.query }, { notify: true });
+            vm.stateService.go("app.search", { query: vm.query }, { notify: true });
         }
     }
 }
