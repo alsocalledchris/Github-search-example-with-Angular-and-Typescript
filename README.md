@@ -7,7 +7,7 @@ The build tasks create a release folder with the App using mini-fied CSS and JS.
 
 #To run
 
-Goto github source folder in PowerShell  
+Goto github source folder in PowerShell and run the below commands in order: 
 npm install  
 bower install  
 gulp build  
