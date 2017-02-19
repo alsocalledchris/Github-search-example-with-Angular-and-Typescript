@@ -14,6 +14,6 @@ bower install
 gulp build  
 npm start  
   
-View release version under /release/index.html
+View ready to release version under /release/index.html with minified JS and CSS. Run gulp task 'watch' to make changes to files (will re-generate CSS and JS on save of SCSS and TS files)
 
 (You will need bower and gulp installed globally - use "npm install gulp -g" and "npm install bower -g" if the above commands throw errors)
