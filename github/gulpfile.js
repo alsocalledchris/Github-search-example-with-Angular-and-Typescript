@@ -12,13 +12,13 @@ runSequence = require('run-sequence'),
 sourcemaps = require('gulp-sourcemaps');
 
 var paths = {
-    releaseFolder: "./release/",
+    releaseFolder: "./www/",
     scriptslib: "scripts/lib/",
     css: "./css/**/*.css",
     appJsFiles: "./scripts/app/",
     html: ["app/**/*.html"],
     jslibraryincludes: ["scripts/lib/" + "jquery/dist/jquery.js", "scripts/lib/" + "bootstrap/dist/js/bootstrap.js",
-           "scripts/lib/" + "angular/angular.js", "scripts/lib/" + "angular-ui-router/release/angular-ui-router.js",
+           "scripts/lib/" + "angular/angular.js", "scripts/lib/" + "angular-ui-router/www/angular-ui-router.js",
             "scripts/lib/" + "spin.js/spin.js", "scripts/lib/" + "angular-spinner/angular-spinner.js"],
     csslibraryinclude: ["scripts/lib/" + "bootstrap/dist/css/bootstrap.css"]
 };
@@ -35,11 +35,11 @@ gulp.task("clean:css", function (cb) {
 });
 
 gulp.task("clean:release", function (cb) {
-    return del(["release"]);
+    return del(["www"]);
 });
 
 gulp.task('cleanscriptsfolder', function () {
-    return del(["release/scripts/**/*"]);
+    return del(["www/scripts/**/*"]);
 });
 
 gulp.task("min:js", function () {
@@ -47,7 +47,7 @@ gulp.task("min:js", function () {
             paths.scriptslib + "jquery/dist/jquery.js",
             paths.scriptslib + "bootstrap/dist/js/bootstrap.min.js",
             paths.scriptslib + "angular/angular.js",
-            paths.scriptslib + "angular-ui-router/release/angular-ui-router.js",
+            paths.scriptslib + "angular-ui-router/www/angular-ui-router.js",
             paths.scriptslib + "spin.js/spin.js",
             paths.scriptslib + "angular-spinner/angular-spinner.js",
             paths.appJsFiles + "repo-issues/*.js",
@@ -73,7 +73,7 @@ gulp.task("copyfonts", function () {
 });
 
 gulp.task("copyhtml", function () {
-    gulp.src(paths.html).pipe(gulp.dest('release/app'));
+    gulp.src(paths.html).pipe(gulp.dest('www/app'));
 });
 
 gulp.task('min:htmlreplace', function() {
@@ -82,7 +82,7 @@ gulp.task('min:htmlreplace', function() {
         'css': 'css/site.min.css',
         'js': 'scripts/site.min.js'
     }))
-    .pipe(gulp.dest('release/'));
+    .pipe(gulp.dest('www/'));
 });
 
 gulp.task("sass", function () {
