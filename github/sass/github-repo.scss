@@ -21,13 +21,15 @@ body {
     height: 25px;
 }
 
-.repo-item-description {
+.table-responsive .table .repo-item-description {
     max-width: 400px;
+    white-space: normal; // Override BootStrap
 }
 
-.repo-item-name {
+.table-responsive .table .repo-item-name {
     max-width: 150px;
     cursor: help;
+    white-space: normal; // Override BootStrap
 }
 
 .repo-item-stats {
@@ -44,12 +46,14 @@ body {
     min-width: 175px;
 }
 
-.issue-description {
+.table-responsive .table .issue-description {
     max-width: 300px;
+    white-space: normal; // Override BootStrap
 }
 
-.issue-title {
+.table-responsive .table .issue-title {
     max-width: 200px;
+    white-space: normal; // Override BootStrap
 }
 
 .search-results-action-container {
