@@ -17,6 +17,7 @@ var paths = {
     css: "./css/**/*.css",
     appJsFiles: "./scripts/app/",
     html: ["app/**/*.html"],
+    config: ["scripts/app/cordova-app.js", "scripts/app/cordova-startup.js"],
     jslibraryincludes: ["scripts/lib/" + "jquery/dist/jquery.js", "scripts/lib/" + "bootstrap/dist/js/bootstrap.js",
            "scripts/lib/" + "angular/angular.js", "scripts/lib/" + "angular-ui-router/www/angular-ui-router.js",
             "scripts/lib/" + "spin.js/spin.js", "scripts/lib/" + "angular-spinner/angular-spinner.js"],
@@ -76,6 +77,14 @@ gulp.task("copyhtml", function () {
     gulp.src(paths.html).pipe(gulp.dest('www/app'));
 });
 
+gulp.task("copyconfig", function () {
+    gulp.src(paths.config).pipe(gulp.dest('www/scripts/app'));
+});
+
+gulp.task("copyresfolder", function () {
+    gulp.src(["res/**/*.*"]).pipe(gulp.dest('www/res'));
+});
+
 gulp.task('min:htmlreplace', function() {
   gulp.src('index.html')
     .pipe(htmlreplace({
@@ -116,7 +125,7 @@ gulp.task("watch", function () {
 gulp.task('build', function(callback) {
   runSequence(["clean:app", "clean:css", "clean:release"],
                 ["typescript", "sass"],
-               ["min:js", "min:css", "copyfonts", "copyhtml"],
+               ["min:js", "min:css", "copyfonts", "copyhtml","copyconfig", "copyresfolder"],
                ["min:htmlreplace"],
               callback);
 });
@@ -124,7 +133,7 @@ gulp.task('build', function(callback) {
 gulp.task('default', function(callback) {
   runSequence(["clean:app", "clean:css", "clean:release"],
                ["typescript", "sass",],
-               ["min:js", "min:css", "copyfonts", "copyhtml"],
+               ["min:js", "min:css", "copyfonts", "copyhtml","copyconfig", "copyresfolder"],
                ["min:htmlreplace"],
               callback);
 });

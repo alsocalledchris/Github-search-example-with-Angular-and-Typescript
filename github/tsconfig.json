@@ -1,16 +1,18 @@
 {
     "compilerOptions": {
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "noEmitOnError": true,
         "removeComments": false,
         "sourceMap": true,
         "target": "es5",
         "outDir": "scripts/app",
-        "rootDir": "app"
+        "rootDir": "app",
+        "module": "amd"
     },
     "exclude": [
         "node_modules",
-        "release"
+        "release",
+        "res"
     ],
     "compileOnSave": true
 }
