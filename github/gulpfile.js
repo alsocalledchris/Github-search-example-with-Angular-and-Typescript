@@ -17,7 +17,7 @@ var paths = {
     css: "./css/**/*.css",
     appJsFiles: "./scripts/app/",
     html: ["app/**/*.html"],
-    config: ["scripts/app/cordova-app.js", "scripts/app/cordova-startup.js"],
+    config: ["scripts/app/cordova/cordova-app.js", "scripts/app/cordova/cordova-startup.js"],
     jslibraryincludes: ["scripts/lib/" + "jquery/dist/jquery.js", "scripts/lib/" + "bootstrap/dist/js/bootstrap.js",
            "scripts/lib/" + "angular/angular.js", "scripts/lib/" + "angular-ui-router/www/angular-ui-router.js",
             "scripts/lib/" + "spin.js/spin.js", "scripts/lib/" + "angular-spinner/angular-spinner.js"],
@@ -44,11 +44,14 @@ gulp.task('cleanscriptsfolder', function () {
 });
 
 gulp.task("min:js", function () {
+    // TODO: Non minified due to passed in JS file to start with... find better way
+    gulp.src(["scripts/lib/requirejs/require.js"]).pipe(gulp.dest('www/scripts/lib/requirejs/')); // Non minified require JS file just copy
+
     return gulp.src([
             paths.scriptslib + "jquery/dist/jquery.js",
             paths.scriptslib + "bootstrap/dist/js/bootstrap.min.js",
             paths.scriptslib + "angular/angular.js",
-            paths.scriptslib + "angular-ui-router/www/angular-ui-router.js",
+            paths.scriptslib + "angular-ui-router/release/angular-ui-router.js",
             paths.scriptslib + "spin.js/spin.js",
             paths.scriptslib + "angular-spinner/angular-spinner.js",
             paths.appJsFiles + "repo-issues/*.js",
@@ -78,7 +81,7 @@ gulp.task("copyhtml", function () {
 });
 
 gulp.task("copyconfig", function () {
-    gulp.src(paths.config).pipe(gulp.dest('www/scripts/app'));
+    gulp.src(paths.config).pipe(gulp.dest('www/scripts/app/cordova'));
 });
 
 gulp.task("copyresfolder", function () {
